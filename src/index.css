@@ -1,1 +1,16 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
+
+.hanken-grotesk-font {
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+:root {
+  --primary: #d97706;
+  --secondary: #0f172a;
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+}
