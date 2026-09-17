@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import MovieCard from "../components/MovieCard";
 
 const Movies = () => {
   const [allMovies, setAllMovies] = useState([]);
@@ -51,9 +52,21 @@ const Movies = () => {
       </div>
 
       {/* movies cards */}
-      <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {allMovies.map((movie) => {
-          return <p key={movie.id}>{movie.name}</p>;
+          return (
+            <MovieCard
+              key={movie.id}
+              image={movie.image?.original || movie.image?.medium}
+              title={movie.name}
+              year={movie.premiered}
+              runtime={movie.runtime}
+              genres={movie.genres}
+              summary={movie.summary}
+              rating={movie.rating?.average}
+              language={movie.language}
+            />
+          );
         })}
       </div>
     </div>
