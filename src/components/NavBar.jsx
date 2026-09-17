@@ -1,11 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Logo from "./Logo";
 
 const NavBar = () => {
   const navLinkClass = ({ isActive }) =>
-    isActive
-      ? "text-black bg-white rounded-full px-4 py-2"
-      : "hover:text-primary";
+    `px-4 py-1.5 rounded-full transition-all duration-200 inline-block font-medium ${
+      isActive
+        ? "bg-white text-black font-semibold shadow-xs"
+        : "text-gray-600 hover:text-primary"
+    }`;
 
   const navLinks = (
     <>
@@ -26,15 +28,21 @@ const NavBar = () => {
       </li>
     </>
   );
+
   return (
     <div className="px-5 py-2 border-b-2 border-gray-100 flex items-center justify-between">
-      <Logo></Logo>
-      <ul className="flex gap-5 bg-gray-100 border-2 border-gray-100 px-4 py-2 rounded-full text-black/70">
+      <Link to="/" className="inline-block">
+        <Logo />
+      </Link>
+      <ul className="flex items-center gap-2 bg-gray-100 border border-gray-200 p-1.5 rounded-full">
         {navLinks}
       </ul>
-      <button className="bg-primary px-5 py-2 text-white rounded-full font-semibold">
+      <Link
+        to="/movies"
+        className="bg-primary px-5 py-2 text-white rounded-full font-semibold hover:opacity-90 transition-opacity"
+      >
         Explore Movies
-      </button>
+      </Link>
     </div>
   );
 };
