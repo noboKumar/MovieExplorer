@@ -26,35 +26,6 @@ const Hero = () => {
             discovery.
           </p>
 
-          {/* Search */}
-          <div className="mt-10 flex max-w-2xl flex-col gap-3 sm:flex-row">
-            <div className="flex flex-1 items-center rounded-xl border border-slate-200 bg-white px-4 shadow-sm transition focus-within:border-[#E5A93C] focus-within:ring-2 focus-within:ring-[#E5A93C]/20">
-              <svg
-                className="mr-3 h-5 w-5 text-slate-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"
-                />
-              </svg>
-
-              <input
-                type="text"
-                placeholder="Search for a movie..."
-                className="w-full bg-transparent py-4 text-sm text-secondary outline-none placeholder:text-slate-400"
-              />
-            </div>
-
-            <button className="rounded-full bg-primary px-7 py-4 font-semibold text-white shadow-sm transition hover:bg-[#d99b2f] hover:shadow-md cursor-pointer">
-              Search Movies
-            </button>
-          </div>
-
           {/* Stats */}
           <div className="mt-12 flex flex-wrap gap-8 border-t border-slate-200 pt-8">
             <div>
