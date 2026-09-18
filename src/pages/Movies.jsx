@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import MovieCard from "../components/MovieCard";
+import MovieDetails from "./MovieDetails";
 
 const Movies = () => {
   const [allMovies, setAllMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [movieId, setMovieId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -35,7 +38,6 @@ const Movies = () => {
     return <Error></Error>;
   }
 
-  console.log(allMovies);
   return (
     <div className="w-11/12 mx-auto py-5 space-y-5">
       {/* title and heading */}
@@ -52,11 +54,12 @@ const Movies = () => {
       </div>
 
       {/* movies cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {allMovies.map((movie) => {
           return (
             <MovieCard
               key={movie.id}
+              id={movie.id}
               image={movie.image?.original || movie.image?.medium}
               title={movie.name}
               year={movie.premiered}
@@ -65,10 +68,22 @@ const Movies = () => {
               summary={movie.summary}
               rating={movie.rating?.average}
               language={movie.language}
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              movieId={movieId}
+              setMovieId={setMovieId}
             />
           );
         })}
       </div>
+      <MovieDetails
+        movieId={movieId}
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setMovieId(null);
+        }}
+      />
     </div>
   );
 };

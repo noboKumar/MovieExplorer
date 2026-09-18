@@ -1,4 +1,5 @@
 const MovieCard = ({
+  id,
   image,
   title,
   year,
@@ -7,10 +8,17 @@ const MovieCard = ({
   summary,
   rating,
   language,
+  setIsModalOpen,
+  setMovieId,
 }) => {
   const displayYear = year ? year.split("-")[0] : "N/A";
   const plainSummary =
     summary?.replace(/<[^>]*>/g, "") || "No summary available.";
+
+  const handleDetailsModal = () => {
+    setIsModalOpen(true);
+    setMovieId(id)
+  };
 
   return (
     <div className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-primary/30">
@@ -56,7 +64,10 @@ const MovieCard = ({
             {plainSummary}
           </p>
 
-          <button className="mt-4 w-full rounded-xl bg-primary py-2 text-xs font-semibold text-white shadow-md transition hover:opacity-90 cursor-pointer">
+          <button
+            onClick={() => handleDetailsModal()}
+            className="mt-4 w-full rounded-xl bg-primary py-2 text-xs font-semibold text-white shadow-md transition hover:opacity-90 cursor-pointer text-center"
+          >
             View Details
           </button>
         </div>
@@ -95,6 +106,7 @@ const MovieCard = ({
           )}
         </div>
       </div>
+      
     </div>
   );
 };
